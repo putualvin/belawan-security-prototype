@@ -1,0 +1,11 @@
+# Netlify config — static SPA, no backend.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Client-side routing: every path falls back to index.html so refreshing
+# on /pic, /ehfs, /case/:id etc. works instead of 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
