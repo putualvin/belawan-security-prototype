@@ -23,6 +23,7 @@ import {
   VENDOR_FLAG_THRESHOLD,
   type CategoryEval,
 } from '../utils/ruleEngine'
+import { detectDeviceMode } from '../utils/device'
 
 export interface AppNotification {
   id: string
@@ -87,9 +88,6 @@ interface AppState {
 }
 
 const clone = <T,>(v: T): T => JSON.parse(JSON.stringify(v)) as T
-
-const initialDeviceMode = (): DeviceMode =>
-  typeof window !== 'undefined' && window.innerWidth < 768 ? 'phone' : 'desktop'
 
 function nextCaseId(cases: ViolationCase[]): string {
   const max = cases.reduce((m, c) => {
@@ -179,7 +177,7 @@ function flagVendorIfNeeded(vendors: Vendor[], cases: ViolationCase[], drivers: 
 
 export const useStore = create<AppState>((set, get) => ({
   currentRole: null,
-  deviceMode: initialDeviceMode(),
+  deviceMode: detectDeviceMode(),
   cases: buildInitialCases(),
   gateAttempts: [],
   drivers: clone(DRIVERS),
@@ -189,12 +187,7 @@ export const useStore = create<AppState>((set, get) => ({
   setRole: (role) =>
     set(() => ({
       currentRole: role,
-      deviceMode:
-        window.innerWidth < 768
-          ? 'phone'
-          : role === 'PIC' || role === 'GATE'
-            ? 'phone'
-            : 'desktop',
+      deviceMode: detectDeviceMode(),
     })),
 
   clearRole: () => set({ currentRole: null }),
