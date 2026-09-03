@@ -17,7 +17,6 @@ import type { Driver } from '../../types'
 
 export function GateSearch() {
   const drivers = useStore((s) => s.drivers)
-  const navigate = useNavigate()
   const [q, setQ] = useState('')
 
   const matches = useMemo(() => {
@@ -73,12 +72,6 @@ export function GateSearch() {
         ))}
       </div>
 
-      {/* Quick incident report */}
-      <div className="sticky bottom-0 border-t border-slate-200 bg-white p-3">
-        <button onClick={() => navigate('/report')} className="btn-danger w-full py-3">
-          <AlertTriangle size={18} /> Lapor Insiden
-        </button>
-      </div>
     </div>
   )
 }
