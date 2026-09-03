@@ -142,7 +142,7 @@ export interface ViolationCase {
   categoryIds: string[]
   evidenceCount: number
   witnesses: string
-  // Rule-engine output captured at report time
+  // Hasil perhitungan sanksi yang disimpan saat laporan dibuat
   driverOutcome: DriverOutcome
   driverOutcomeLabel: string
   vehicleSanctions: VehicleSanction[]
