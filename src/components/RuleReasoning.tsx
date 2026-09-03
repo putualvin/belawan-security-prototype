@@ -9,13 +9,13 @@ interface Props {
   routing: Routing
 }
 
-/** Makes the rule-engine logic visible — central to stakeholder validation. */
+/** Displays the basis for the sanction decision. */
 export function RuleReasoning({ driverOutcome, vehicleSanctions, reasoning, routing }: Props) {
   return (
     <div className="overflow-hidden rounded-2xl border border-brand-200 bg-brand-50">
       <div className="flex items-center gap-2 border-b border-brand-200 bg-brand-100/60 px-4 py-2.5">
         <Scale size={16} className="text-brand-700" />
-        <span className="text-sm font-bold text-brand-800">Rekayasa Aturan (Rule Engine)</span>
+        <span className="text-sm font-bold text-brand-800">Dasar Penetapan Sanksi</span>
       </div>
 
       <div className="space-y-3 p-4">
@@ -65,7 +65,7 @@ export function RuleReasoning({ driverOutcome, vehicleSanctions, reasoning, rout
         >
           <UserCheck size={18} className="mt-0.5 shrink-0" />
           <span>
-            <span className="font-semibold">Routing: </span>
+            <span className="font-semibold">Tindak lanjut: </span>
             {routing === 'APPROVAL'
               ? 'Berujung blacklist → wajib persetujuan EHFS (SLA 2 hari kerja).'
               : 'Tanpa blacklist → dapat dieksekusi langsung oleh PIC.'}
