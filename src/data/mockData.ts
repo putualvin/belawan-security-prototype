@@ -9,7 +9,7 @@ import type {
 import { evaluate, priorCountsFromHistory } from '../utils/ruleEngine'
 
 // ---------------------------------------------------------------------------
-// ROLES — fake login simply picks one of these.
+// ROLES — demo accounts are filtered by the detected device class at login.
 // ---------------------------------------------------------------------------
 export const ROLES: RoleDef[] = [
   {
