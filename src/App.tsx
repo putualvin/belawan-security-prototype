@@ -8,6 +8,7 @@ import { ReportWizard } from './pages/ReportWizard'
 import { CaseDetail } from './pages/CaseDetail'
 import { EhfsQueue } from './pages/ehfs/EhfsQueue'
 import { GateSearch } from './pages/gate/GateSearch'
+import { GateReentryReport } from './pages/gate/GateReentryReport'
 import { ProcurementDashboard } from './pages/procurement/ProcurementDashboard'
 import { VendorDetail } from './pages/procurement/VendorDetail'
 import { ManagementDashboard } from './pages/management/ManagementDashboard'
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/case/:id" element={<CaseDetail />} />
         <Route path="/ehfs" element={<EhfsQueue />} />
         <Route path="/gate" element={<GateSearch />} />
+        <Route path="/gate/reentry" element={<GateReentryReport />} />
         <Route path="/procurement" element={<ProcurementDashboard />} />
         <Route path="/procurement/vendor/:id" element={<VendorDetail />} />
         <Route path="/management" element={<ManagementDashboard />} />
