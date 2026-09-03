@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import {
   AlertTriangle,
@@ -14,6 +15,7 @@ import { ROLES } from '../data/mockData'
 import { RoleSwitcher } from './RoleSwitcher'
 import { NotificationBell } from './NotificationBell'
 import { ROLE_ICON } from './roleIcons'
+import { detectDeviceMode } from '../utils/device'
 
 interface NavItem {
   to: string
@@ -29,7 +31,7 @@ const NAV: Record<RoleKey, NavItem[]> = {
   ],
   GATE: [
     { to: '/gate', label: 'Cek Status', icon: ScanLine, end: true },
-    { to: '/report', label: 'Lapor Insiden', icon: AlertTriangle },
+    { to: '/report', label: 'Pelanggaran Baru', icon: AlertTriangle },
   ],
   EHFS: [{ to: '/ehfs', label: 'Antrian Persetujuan', icon: Inbox, end: true }],
   PROCUREMENT: [{ to: '/procurement', label: 'Vendor', icon: Truck, end: true }],
@@ -53,9 +55,16 @@ function Brand({ compact = false }: { compact?: boolean }) {
 export function Shell() {
   const currentRole = useStore((s) => s.currentRole)!
   const deviceMode = useStore((s) => s.deviceMode)
+  const setDeviceMode = useStore((s) => s.setDeviceMode)
   const role = ROLES.find((r) => r.key === currentRole)!
   const nav = NAV[currentRole]
   const RoleIcon = ROLE_ICON[currentRole]
+
+  useEffect(() => {
+    const onResize = () => setDeviceMode(detectDeviceMode())
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [setDeviceMode])
 
   // -------------------------------------------------------------- PHONE
   if (deviceMode === 'phone') {
