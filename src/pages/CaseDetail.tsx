@@ -132,7 +132,7 @@ export function CaseDetail() {
         )}
       </div>
 
-      {/* Rule engine */}
+      {/* Dasar penetapan sanksi */}
       <RuleReasoning
         driverOutcome={c.driverOutcome}
         vehicleSanctions={c.vehicleSanctions}
