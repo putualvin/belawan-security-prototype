@@ -8,7 +8,7 @@ import type {
 } from '../types'
 
 // ---------------------------------------------------------------------------
-// Rule engine — sanction-matrix model. For each reported category we read the
+// Sanction-matrix model. For each reported category we read the
 // driver track and the vehicle sanction(s) from the matrix, then:
 //   - driver sanction: resolved per category using the driver's prior history,
 //     then the HEAVIEST outcome across categories is taken.
