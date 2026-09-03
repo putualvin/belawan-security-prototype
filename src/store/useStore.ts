@@ -4,6 +4,7 @@ import type {
   Driver,
   DriverOutcome,
   DriverStatus,
+  GateAttempt,
   RoleKey,
   Vendor,
   VendorStatus,
@@ -49,10 +50,21 @@ export interface NewDriverInput {
   plate: string
 }
 
+export interface NewGateAttemptInput {
+  driverId: string
+  locationId: string
+  description: string
+  evidenceCount: number
+  attemptedAt: string
+  reporterName: string
+  reporterDept: string
+}
+
 interface AppState {
   currentRole: RoleKey | null
   deviceMode: DeviceMode
   cases: ViolationCase[]
+  gateAttempts: GateAttempt[]
   drivers: Driver[]
   vendors: Vendor[]
   notifications: AppNotification[]
@@ -64,6 +76,7 @@ interface AppState {
   resetDemo: () => void
 
   addCase: (input: NewCaseInput) => string
+  addGateAttempt: (input: NewGateAttemptInput) => string
   addDriver: (input: NewDriverInput) => string
   approveCase: (caseId: string, comment: string, adjustedCategoryIds?: string[]) => void
   rejectCase: (caseId: string, comment: string) => void
@@ -84,6 +97,14 @@ function nextCaseId(cases: ViolationCase[]): string {
     return Number.isFinite(n) && n > m ? n : m
   }, 0)
   return `KSS-2026-${String(max + 1).padStart(3, '0')}`
+}
+
+function nextGateAttemptId(attempts: GateAttempt[]): string {
+  const max = attempts.reduce((m, attempt) => {
+    const n = Number(attempt.id.split('-').pop())
+    return Number.isFinite(n) && n > m ? n : m
+  }, 0)
+  return `GATE-2026-${String(max + 1).padStart(3, '0')}`
 }
 
 function addDays(iso: string, days: number): string {
@@ -160,6 +181,7 @@ export const useStore = create<AppState>((set, get) => ({
   currentRole: null,
   deviceMode: initialDeviceMode(),
   cases: buildInitialCases(),
+  gateAttempts: [],
   drivers: clone(DRIVERS),
   vendors: clone(VENDORS),
   notifications: [],
@@ -182,6 +204,7 @@ export const useStore = create<AppState>((set, get) => ({
   resetDemo: () =>
     set({
       cases: buildInitialCases(),
+      gateAttempts: [],
       drivers: clone(DRIVERS),
       vendors: clone(VENDORS),
       notifications: [],
@@ -289,6 +312,31 @@ export const useStore = create<AppState>((set, get) => ({
 
     set({ cases: [base, ...state.cases], drivers, vendors, notifications })
     return id
+  },
+
+  addGateAttempt: (input) => {
+    const state = get()
+    const driver = state.drivers.find((d) => d.id === input.driverId)
+    if (!driver) throw new Error('Pihak ketiga tidak ditemukan.')
+
+    const now = new Date().toISOString()
+    const attempt: GateAttempt = {
+      id: nextGateAttemptId(state.gateAttempts),
+      attemptedAt: input.attemptedAt || now,
+      reportedAt: now,
+      driverId: driver.id,
+      vehiclePlate: driver.plates[0] ?? '-',
+      locationId: input.locationId,
+      reason: driver.statusReason ?? 'Blacklist aktif',
+      description: input.description.trim(),
+      outcome: 'denied',
+      reporterName: input.reporterName,
+      reporterDept: input.reporterDept,
+      evidenceCount: input.evidenceCount,
+    }
+
+    set({ gateAttempts: [attempt, ...state.gateAttempts] })
+    return attempt.id
   },
 
   approveCase: (caseId, comment, adjustedCategoryIds) =>
