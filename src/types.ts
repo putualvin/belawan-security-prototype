@@ -91,6 +91,22 @@ export interface Driver {
   history: DriverHistoryItem[]
 }
 
+/** A gate event where an already-blacklisted party attempts to enter again. */
+export interface GateAttempt {
+  id: string
+  attemptedAt: string
+  reportedAt: string
+  driverId: string
+  vehiclePlate: string
+  locationId: string
+  reason: string
+  description: string
+  outcome: 'denied'
+  reporterName: string
+  reporterDept: string
+  evidenceCount: number
+}
+
 export interface AuditEntry {
   at: string
   actor: string
