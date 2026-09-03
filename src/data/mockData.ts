@@ -207,13 +207,14 @@ export const vendorById = (id: string): Vendor =>
 
 // ---------------------------------------------------------------------------
 // DRIVERS (15) — statuses & history keyed by categoryId so escalation counts.
+// All KTP and phone values below are synthetic demo data.
 // ---------------------------------------------------------------------------
 export const DRIVERS: Driver[] = [
   {
     id: 'D-DONI',
     name: 'Doni Wijaya',
-    ktp: '1271054505900001',
-    phone: '0813-6042-1188',
+    ktp: 'DEMO-KTP-001',
+    phone: '08xx-xxxx-0001',
     vendorId: 'V-SEJAHTERA',
     plates: ['BK 8024 FI'],
     status: 'blacklisted',
@@ -226,8 +227,8 @@ export const DRIVERS: Driver[] = [
   {
     id: 'D-RUDI',
     name: 'Rudi Hartono',
-    ktp: '1271052203880002',
-    phone: '0812-6701-2234',
+    ktp: 'DEMO-KTP-002',
+    phone: '08xx-xxxx-0002',
     vendorId: 'V-SEJAHTERA',
     plates: ['BK 9156 XY'],
     status: 'blacklisted',
@@ -237,8 +238,8 @@ export const DRIVERS: Driver[] = [
   {
     id: 'D-AGUS',
     name: 'Agus Salim',
-    ktp: '1271051509910003',
-    phone: '0853-6112-9087',
+    ktp: 'DEMO-KTP-003',
+    phone: '08xx-xxxx-0003',
     vendorId: 'V-MAKMUR',
     plates: ['BK 1023 CD'],
     status: 'sp2',
@@ -251,21 +252,21 @@ export const DRIVERS: Driver[] = [
   {
     id: 'D-JOKO',
     name: 'Joko Susilo',
-    ktp: '1271050407850004',
-    phone: '0821-6553-4410',
+    ktp: 'DEMO-KTP-004',
+    phone: '08xx-xxxx-0004',
     vendorId: 'V-BERKAH',
     plates: ['BK 7782 LM'],
     status: 'sp1',
     statusReason: 'SP-1 — indisipliner (melawan security).',
     history: [{ date: '2025-11-20', categoryId: 'CAT-INDIS-SEC', group: 'Indisipliner', description: 'Melawan security saat pemeriksaan', outcome: 'SP1' }],
   },
-  { id: 'D-BAMBANG', name: 'Bambang Wijoyo', ktp: '1271051102870005', phone: '0813-6090-7781', vendorId: 'V-BAHARI', plates: ['BK 4421 PQ'], status: 'clear', history: [] },
-  { id: 'D-EKO', name: 'Eko Saputra', ktp: '1271052810920006', phone: '0852-7610-3321', vendorId: 'V-CAHAYA', plates: ['BK 3310 RS'], status: 'clear', history: [] },
+  { id: 'D-BAMBANG', name: 'Bambang Wijoyo', ktp: 'DEMO-KTP-005', phone: '08xx-xxxx-0005', vendorId: 'V-BAHARI', plates: ['BK 4421 PQ'], status: 'clear', history: [] },
+  { id: 'D-EKO', name: 'Eko Saputra', ktp: 'DEMO-KTP-006', phone: '08xx-xxxx-0006', vendorId: 'V-CAHAYA', plates: ['BK 3310 RS'], status: 'clear', history: [] },
   {
     id: 'D-HENDRA',
     name: 'Hendra Gunawan',
-    ktp: '1271050703890007',
-    phone: '0812-6745-9912',
+    ktp: 'DEMO-KTP-007',
+    phone: '08xx-xxxx-0007',
     vendorId: 'V-NUSANTARA',
     plates: ['BK 6654 TU'],
     status: 'sp1',
@@ -275,46 +276,46 @@ export const DRIVERS: Driver[] = [
   {
     id: 'D-SLAMET',
     name: 'Slamet Riyadi',
-    ktp: '1271051806840008',
+    ktp: 'DEMO-KTP-008',
     vendorId: 'V-SAMUDERA',
     plates: ['BK 2298 VW'],
     status: 'blacklisted',
     statusReason: 'Blacklist permanen — manipulasi timbangan; vendor diterminasi.',
     history: [{ date: '2025-09-05', categoryId: 'CAT-MANIP', group: 'Manipulasi Muatan', description: 'Bandul air pada muatan', outcome: 'BLACKLIST' }],
   },
-  { id: 'D-WAYAN', name: 'I Wayan Sudarma', ktp: '5103051204900009', phone: '0819-3344-1100', vendorId: 'V-MANDIRI', plates: ['BK 1145 AB'], status: 'clear', history: [] },
-  { id: 'D-FAJAR', name: 'Fajar Pratama', ktp: '1271052501930010', phone: '0813-6112-7788', vendorId: 'V-MAKMUR', plates: ['BK 8890 KK'], status: 'clear', history: [] },
+  { id: 'D-WAYAN', name: 'I Wayan Sudarma', ktp: 'DEMO-KTP-009', phone: '08xx-xxxx-0009', vendorId: 'V-MANDIRI', plates: ['BK 1145 AB'], status: 'clear', history: [] },
+  { id: 'D-FAJAR', name: 'Fajar Pratama', ktp: 'DEMO-KTP-010', phone: '08xx-xxxx-0010', vendorId: 'V-MAKMUR', plates: ['BK 8890 KK'], status: 'clear', history: [] },
   {
     id: 'D-DEDI',
     name: 'Dedi Kurniawan',
-    ktp: '1271050908860011',
-    phone: '0852-6234-9911',
+    ktp: 'DEMO-KTP-011',
+    phone: '08xx-xxxx-0011',
     vendorId: 'V-SEJAHTERA',
     plates: ['BK 5567 GH'],
     status: 'sp1',
     statusReason: 'SP-1 — membawa barang terlarang (rokok).',
     history: [{ date: '2026-02-22', categoryId: 'CAT-BARANG', group: 'Barang Terlarang', description: 'Membawa korek api', outcome: 'SP1' }],
   },
-  { id: 'D-TONO', name: 'Tono Wibowo', ktp: '1271051712910012', phone: '0821-6678-2200', vendorId: 'V-BERKAH', plates: ['BK 3344 JK'], status: 'clear', history: [] },
+  { id: 'D-TONO', name: 'Tono Wibowo', ktp: 'DEMO-KTP-012', phone: '08xx-xxxx-0012', vendorId: 'V-BERKAH', plates: ['BK 3344 JK'], status: 'clear', history: [] },
   {
     id: 'D-IWAN',
     name: 'Iwan Setiawan',
-    ktp: '1271050605880013',
+    ktp: 'DEMO-KTP-013',
     vendorId: 'V-BAHARI',
     plates: ['BK 7711 MN'],
     status: 'blacklisted',
     statusReason: 'Blacklist permanen — tipping petugas (KSS-2026-010).',
     history: [{ date: '2026-05-10', categoryId: 'CAT-TIPPING', group: 'Tipping', description: 'Memberi uang ke petugas timbang', outcome: 'BLACKLIST', caseId: 'KSS-2026-010' }],
   },
-  { id: 'D-PUTU', name: 'Putu Arya', ktp: '5103052309940014', phone: '0819-3367-5544', vendorId: 'V-CAHAYA', plates: ['BK 9923 OP'], status: 'clear', history: [] },
-  { id: 'D-RIZAL', name: 'Rizal Effendi', ktp: '1271051408900015', phone: '0813-6098-3322', vendorId: 'V-NUSANTARA', plates: ['BK 1267 QR'], status: 'clear', history: [] },
+  { id: 'D-PUTU', name: 'Putu Arya', ktp: 'DEMO-KTP-014', phone: '08xx-xxxx-0014', vendorId: 'V-CAHAYA', plates: ['BK 9923 OP'], status: 'clear', history: [] },
+  { id: 'D-RIZAL', name: 'Rizal Effendi', ktp: 'DEMO-KTP-015', phone: '08xx-xxxx-0015', vendorId: 'V-NUSANTARA', plates: ['BK 1267 QR'], status: 'clear', history: [] },
 ]
 
 export const driverById = (id: string): Driver =>
   DRIVERS.find((d) => d.id === id)!
 
 // ---------------------------------------------------------------------------
-// CASES (10) — built through the rule engine so outcomes are consistent.
+// CASES (10) — generated from the applicable sanction matrix.
 // priorBeforeCase lets a seeded case reflect history that existed *before* it.
 // ---------------------------------------------------------------------------
 interface CaseSeed {
@@ -387,7 +388,7 @@ const CASE_SEEDS: CaseSeed[] = [
     reporterName: 'Siti Rahma',
     reporterDept: 'Logistik',
     locationId: 'LOC-WB',
-    description: 'Supir kedapatan memasang bandul batu pada muatan dan membawa rokok ke area pabrik dalam satu kejadian — kasus rujukan rekayasa aturan (multi-kategori).',
+    description: 'Supir kedapatan memasang bandul batu pada muatan dan membawa rokok ke area pabrik dalam satu kejadian dengan lebih dari satu kategori pelanggaran.',
     driverId: 'D-DONI',
     categoryIds: ['CAT-BARANG', 'CAT-MANIP'],
     evidenceCount: 4,
@@ -398,7 +399,7 @@ const CASE_SEEDS: CaseSeed[] = [
     approval: { decision: 'approved', decidedBy: 'Eko Prasetyo (EHFS)', decidedAt: '2026-05-02T10:30:00', comment: 'Disetujui. Manipulasi muatan = blacklist langsung.' },
     audit: [
       { at: '2026-04-30T09:15:00', actor: 'Siti Rahma (PIC Logistik)', action: 'Membuat laporan' },
-      { at: '2026-04-30T09:16:00', actor: 'Sistem', action: 'Rekayasa aturan: manipulasi muatan → blacklist langsung' },
+      { at: '2026-04-30T09:16:00', actor: 'Sistem', action: 'Penetapan sanksi berdasarkan matriks: manipulasi muatan → blacklist langsung' },
       { at: '2026-05-02T10:35:00', actor: 'Eko Prasetyo (EHFS)', action: 'Menyetujui & menerbitkan blacklist permanen' },
     ],
   },
