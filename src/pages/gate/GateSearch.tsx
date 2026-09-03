@@ -85,6 +85,7 @@ export function GateSearch() {
 
 function ResultCard({ d }: { d: Driver }) {
   const vendor = vendorById(d.vendorId)
+  const navigate = useNavigate()
   const blocked = d.status === 'blacklisted'
 
   const banner = {
@@ -114,6 +115,15 @@ function ResultCard({ d }: { d: Driver }) {
             <AlertTriangle size={16} className="mt-0.5 shrink-0" />
             <span><span className="font-semibold">Alasan: </span>{d.statusReason}</span>
           </div>
+        )}
+
+        {blocked && (
+          <button
+            onClick={() => navigate(`/gate/reentry?driverId=${encodeURIComponent(d.id)}`)}
+            className="btn-danger w-full py-3"
+          >
+            <AlertTriangle size={18} /> Laporkan Percobaan Masuk
+          </button>
         )}
         {!blocked && d.statusReason && (
           <div className="flex items-start gap-2 rounded-xl bg-yellow-50 p-3 text-sm text-yellow-800 ring-1 ring-yellow-100">
