@@ -42,8 +42,8 @@ export function Landing() {
             Satu alur, lima peran, satu sumber kebenaran.
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-white/75">
-            Menggantikan alur kerja kertas &amp; Excel yang terfragmentasi dengan rekayasa aturan
-            (rule engine) dan eskalasi otomatis. Pilih salah satu peran di bawah untuk mencobanya.
+            Menggantikan alur kerja kertas &amp; Excel yang terfragmentasi dengan perhitungan sanksi
+            berdasarkan matriks yang berlaku dan eskalasi otomatis. Pilih salah satu peran di bawah untuk mencobanya.
           </p>
 
           <div className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-400/10 p-3 text-sm text-amber-100 ring-1 ring-amber-300/30">
